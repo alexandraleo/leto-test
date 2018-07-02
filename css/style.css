@@ -1,0 +1,118 @@
+@font-face {
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/segoeui.woff2") format("woff2"),
+    url("../fonts/segoeui.woff") format("woff")
+}
+@font-face {
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/segoeui.woff2") format("woff2"),
+    url("../fonts/segoeui.woff") format("woff")
+}
+:root {
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    margin: 0;
+    background: #a9dbf6 url('../img/bg-mobile.jpg') no-repeat;
+}
+
+.page-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    font-family: inherit;
+    overflow: hidden;
+}
+
+.page-header__link {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* .page-header__animation {
+    position: absolute;
+    top: 50px;
+    left: 0%;
+    width: 232px;
+    height: 85px;
+    animation-name: move;
+    animation-duration: 8s;
+} */
+ @keyframes move {
+    0% { transform: translateX(-20%);
+    }
+    100% {transform: translateX(100%);
+    }
+}
+
+.page-header::after {
+    position: absolute;
+    top: 50px;
+    left: 0%;
+    content: "";
+    background: transparent url(../img/plane.png) no-repeat;
+    width: 100%;
+    height: 85px;
+    animation-name: move;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.page-main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.page-main__header {
+    font-family: inherit;
+    color: #184a6f;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-size: 50px;
+}
+.page-main__header, .page-main__subheader {
+    font-family: inherit;
+    color: #184a6f;
+    text-transform: uppercase;
+    font-size: 26px;
+}
+.page-main__subheader {
+    font-size: 24px;
+}
+.page-main__subheader--hot-price {
+    color: #ff1a14;
+    font-size: 36px;
+}
+
+@media (min-width: 320px) {
+    .page {
+        background-image: url('../img/bg.jpg');
+    }
+    .page-main__header {
+        font-size: 50px;
+    }
+    .page-main__subheader {
+        font-size: 58px;
+    }
+    .page-main__subheader--hot-price {
+        font-size: 78px;
+    }
+}
+
+.page-footer {
+    width: 100%;
+}
