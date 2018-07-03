@@ -3,14 +3,14 @@
     font-style: normal;
     font-weight: normal;
     src: url("../fonts/segoeui.woff2") format("woff2"),
-    url("../fonts/segoeui.woff") format("woff")
+    url("../fonts/segoeui.ttf") format("ttf")
 }
 @font-face {
     font-family: "Segoe UI";
     font-style: normal;
     font-weight: bold;
     src: url("../fonts/segoeui.woff2") format("woff2"),
-    url("../fonts/segoeui.woff") format("woff")
+    url("../fonts/segoeui.ttf") format("ttf")
 }
 :root {
     box-sizing: border-box;
@@ -23,7 +23,11 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: stretch;
+    flex-shrink: 0;
+    flex-grow: 1;
+    height: 100%;
     margin: 0;
+    /* overflow: hidden; */
     background: #a9dbf6 url('../img/bg-mobile.jpg') no-repeat;
 }
 
@@ -42,21 +46,20 @@
     padding: 20px;
 }
 
-/* .page-header__animation {
-    position: absolute;
-    top: 50px;
-    left: 0%;
-    width: 232px;
-    height: 85px;
-    animation-name: move;
-    animation-duration: 8s;
-} */
- @keyframes move {
-    0% { transform: translateX(-20%);
+@keyframes move {
+       0%, 100%  { transform: translateX(-20%);}
+       50% { transform: translateX(110%);}
+       /* 50.001% {transform: rotateY(180deg);} */
     }
-    100% {transform: translateX(100%);
+
+/* @keyframes move {
+       0%  { transform: translateX(-20%);}
+       100% {transform: translateX(110%);}
     }
-}
+@keyframes moveb {
+       0%  { transform: translateX(110%);}
+       100% {transform: translateX(-20%);}
+    } */
 
 .page-header::after {
     position: absolute;
@@ -66,32 +69,36 @@
     background: transparent url(../img/plane.png) no-repeat;
     width: 100%;
     height: 85px;
-    animation-name: move;
-    animation-duration: 8s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    animation: move 10s linear alternate infinite;
 }
 .page-main {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    flex-basis: auto;
     align-items: center;
+    flex-shrink: 0;
+    flex-grow: 1;
 }
 .page-main__header {
     font-family: inherit;
     color: #184a6f;
     line-height: 1.2;
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 26px;
+    margin-top: 60px;
+    margin-bottom: 0;
 }
 .page-main__header, .page-main__subheader {
     font-family: inherit;
     color: #184a6f;
     text-transform: uppercase;
-    font-size: 26px;
+    font-weight: bold;
 }
 .page-main__subheader {
     font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 .page-main__subheader--hot-price {
     color: #ff1a14;
@@ -107,12 +114,168 @@
     }
     .page-main__subheader {
         font-size: 58px;
+        line-height: 0.8;
     }
     .page-main__subheader--hot-price {
         font-size: 78px;
     }
 }
 
+.page-main__button {
+    box-sizing: border-box;
+    position: relative;
+    width: 385px;
+    height: 90px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border-width: 10px;
+    border-left-color: #cc8246;
+    border-bottom-color: #cc8246;
+    border-right-color:#ffdaa4; 
+    border-top-color:#ffdaa4;
+    background-color: #ffa358;
+    color: #bd0707;
+    font-size: 73px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1;
+}
+.page-main__button--text {
+    background: linear-gradient(#dc2207 50%, #980607 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-main__button::before {
+    position: absolute;
+    content: "";
+    z-index: -10;
+    transform: translate(-30%, -50%);
+    width: 575px;
+    height: 205px;
+    background: transparent url('../img/log.png') no-repeat center;
+}
+
+.main-page__crab {
+    position: relative;
+    z-index: 5;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    width: 150px;
+    height: 160px;
+    outline: 2px red solid;
+    animation: crab-move 1.5s linear infinite alternate;
+}
+
+@keyframes crab-move {
+    0% {transform: translateX(-120px);}
+    100% {transform: translateX(120px);}
+}
+@keyframes crab-foot {
+    0% {transform: rotate(35deg);}
+    100% {transform: rotate(-35deg);}    
+}
+@keyframes crab-body {
+    0% {transform: translate(0, -1px);}
+    100% {transform: translate(0, 1px);}    
+}
+@keyframes crab-hand {
+    0% {transform: rotate(5deg);}
+    100% {transform: rotate(-5deg);}    
+}
+
+.main-page__crab--shell {
+    position: absolute;
+    top: 5px;
+    left: 20%;
+}
+.main-page__crab--body {
+    position: absolute;
+    top: 90px;
+    left: 25%;
+    animation: crab-body 0.5s linear 0s infinite alternate;
+}
+.main-page__crab--foot-left {
+    position: absolute;
+    top: 90px;
+    left: 0%;
+    animation: crab-foot 0.2s ease-in 0s infinite alternate;
+}
+.main-page__crab--foot-right {
+    position: absolute;
+    top: 90px;
+    left: 70%;
+    animation: crab-foot 0.2s ease-in 0.7s infinite alternate;
+}
+
+.main-page__crab--hand-right {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    animation: crab-hand 0.5s linear 0.1s infinite alternate;
+}
+
+.main-page__crab--hand-left {
+    position: absolute;
+    top: 120px;
+    left: 15%;
+    animation: crab-hand 0.5s linear 0.1s infinite alternate;
+}
+
+.main-page__crab--eye-left {
+    position: absolute;
+    top: 110px;
+    left: 35%;
+}
+
+.main-page__crab--eye-right {
+    position: absolute;
+    top: 110px;
+    left: 55%;
+}
+
+.main-page__crab--eye1 {
+    position: absolute;
+    top: 110px;
+    left: 35%;
+}
+
+.main-page__crab--eye2 {
+    position: absolute;
+    top: 110px;
+    left: 60%;
+}
+
 .page-footer {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
+.page-footer__text {
+    font-family: inherit;
+    font-size: 58px;
+    font-weight: bold;
+    color: #184a6f;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.page-footer:hover .page-footer__animation {
+    animation: turtle 3.5s linear 0s infinite alternate;
+}
+
+@keyframes turtle {
+    0%, 100% {transform: rotate(10deg);}
+    50% {transform: rotate(-10deg);}    
 }
