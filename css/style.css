@@ -46,13 +46,6 @@
     padding: 20px;
 }
 
-@keyframes move {
-       0%  { transform: translateX(-5vw) rotateY(0deg);}
-       50% { transform: translateX(110vw) rotateY(0deg);}
-       50.001% { transform: translateX(110vw) rotateY(180deg);}
-       100%  { transform: translateX(-110vw) rotateY(180deg);}
-    }
-
 .page-header__animation {
     position: absolute;
     top: 50px;
@@ -117,6 +110,7 @@
     position: relative;
     width: 385px;
     height: 90px;
+    order: 2;
     margin: 0;
     padding: 0;
     outline: none;
@@ -148,22 +142,24 @@
     background: transparent url('../img/log.png') no-repeat center;
 }
 
-.main-page__crab {
+.page-main__crab {
     position: relative;
     z-index: 5;
-    margin-top: 20px;
     margin-bottom: 0px;
     width: 150px;
     height: 160px;
-    outline: 2px red solid;
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
     animation: crab-move 1.5s linear alternate infinite;
 }
 
-.main-page__button:hover .main-page__crab {
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-}
 
+@keyframes move {
+       0%  { transform: translateX(-5vw) rotateY(0deg);}
+       50% { transform: translateX(110vw) rotateY(0deg);}
+       50.001% { transform: translateX(110vw) rotateY(180deg);}
+       100%  { transform: translateX(-110vw) rotateY(180deg);}
+    }
 @keyframes crab-move {
     0% {transform: translateX(-120px);}
     100% {transform: translateX(120px);}
@@ -181,66 +177,84 @@
     100% {transform: rotate(-5deg);}    
 }
 
-.main-page__crab--shell {
+.page-main__crab--shell {
     position: absolute;
     top: 5px;
     left: 20%;
 }
-.main-page__crab--body {
+.page-main__crab--body {
     position: absolute;
     top: 90px;
     left: 25%;
     animation: crab-body 0.5s linear 0s infinite alternate;
 }
-.main-page__crab--foot-left {
+.page-main__crab--foot-left {
     position: absolute;
     top: 90px;
     left: 0%;
     animation: crab-foot 0.2s ease-in 0s infinite alternate;
 }
-.main-page__crab--foot-right {
+.page-main__crab--foot-right {
     position: absolute;
     top: 90px;
     left: 70%;
     animation: crab-foot 0.2s ease-in 0.7s infinite alternate;
 }
 
-.main-page__crab--hand-right {
+.page-main__crab--hand-right {
     position: absolute;
     top: 120px;
     left: 50%;
     animation: crab-hand 0.5s linear 0.1s infinite alternate;
 }
 
-.main-page__crab--hand-left {
+.page-main__crab--hand-left {
     position: absolute;
     top: 120px;
     left: 15%;
     animation: crab-hand 0.5s linear 0.1s infinite alternate;
 }
 
-.main-page__crab--eye-left {
+.page-main__crab--eye-left {
     position: absolute;
     top: 110px;
     left: 35%;
 }
 
-.main-page__crab--eye-right {
+.page-main__crab--eye-right {
     position: absolute;
     top: 110px;
     left: 55%;
 }
 
-.main-page__crab--eye1 {
+.page-main__crab--eye1 {
     position: absolute;
     top: 110px;
     left: 35%;
 }
 
-.main-page__crab--eye2 {
+.page-main__crab--eye2 {
     position: absolute;
     top: 110px;
     left: 60%;
+}
+
+.page-main__button:hover + .page-main__crab {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+.page-main__button:hover + .page-main__crab .page-main__crab--foot-right {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    animation: knock 1s linear 1s infinite;
+/*    transform: transitionY(25px);
+*/}
+
+@keyframes knock {
+    0%, 100% {transform: transitionY(0px);}
+    25% {transform: transitionY(25px);}
+    50% {transform: transitionY(0px);}
+    75% {transform: transitionY(25px);}
 }
 
 .page-footer {
@@ -277,6 +291,7 @@
 }
 
 .page-main__list-wrap {
+    order: 4;
     position: relative;
     width: 80vw;
     height: 200px;
@@ -336,7 +351,7 @@
 .page-main__list {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-between;
     align-items: center;
@@ -344,6 +359,7 @@
 }
 
 .page-main__list-link {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -351,8 +367,34 @@
     align-items: center;
     align-content: center;
     text-decoration: none;
+    padding-top: 100px;
 }
 
+.page-main__list-link::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 25%;
+    width: 150px;
+    height: 150px;
+    border: 10px #fff solid;
+    box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+/*    transform: translate(-50%, -50%);
+*/}
+
+.list__link-drive::before {
+    background: transparent url("../img/car.jpg") no-repeat center;
+}
+.list__link-sun::before {
+    background: transparent url("../img/car2.jpg") no-repeat center;
+}
+.list__link-sand::before {
+    background: transparent url("../img/map.jpg") no-repeat center;
+}
+.list__link-resort::before {
+    background: transparent url("../img/beach.jpg") no-repeat center;
+}
 .page-main__list-title {
     font-size: 35px;
     /* font-weight: bold; */
