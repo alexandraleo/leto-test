@@ -2,15 +2,13 @@
     font-family: "Segoe UI";
     font-style: normal;
     font-weight: normal;
-    src: url("../fonts/segoeui.woff2") format("woff2"),
-    url("../fonts/segoeui.ttf") format("ttf")
+    src: url("../fonts/segoeui.ttf") format("ttf")
 }
 @font-face {
     font-family: "Segoe UI";
     font-style: normal;
     font-weight: bold;
-    src: url("../fonts/segoeui.woff2") format("woff2"),
-    url("../fonts/segoeui.ttf") format("ttf")
+    src: url("../fonts/segoeuib.ttf") format("ttf")
 }
 :root {
     box-sizing: border-box;
@@ -21,20 +19,24 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: stretch;
     flex-shrink: 0;
     flex-grow: 1;
     height: 100%;
-    margin: 0;
+    margin: 0 auto;
     /* overflow: hidden; */
     background: #a9dbf6 url('../img/bg-mobile.jpg') no-repeat;
 }
 
 .page-header {
+    font-family: inherit;
     display: flex;
+    align-items: center;
+    align-content: center;
     justify-content: center;
-    width: 100%;
+    width: 300px;
+    margin: 0 10px;
     position: relative;
     box-sizing: border-box;
     font-family: inherit;
@@ -48,19 +50,23 @@
 
 .page-header__animation {
     position: absolute;
-    top: 50px;
-    left: 0%;
+    z-index: -1;
+    top: 5px;
+    left: 195px;
     width: 232px;
     height: 85px;
-    animation: move 25s linear infinite;
+    /* animation: move 25s linear infinite; */
 }
 
 .page-main {
+    width: 300px;
+    margin: 0 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     flex-basis: auto;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     flex-grow: 1;
 }
@@ -70,10 +76,13 @@
     line-height: 1.2;
     text-transform: uppercase;
     font-size: 26px;
-    margin-top: 60px;
+    margin-top: 0;
     margin-bottom: 0;
 }
 .page-main__header, .page-main__subheader {
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
     font-family: inherit;
     color: #184a6f;
     text-transform: uppercase;
@@ -82,46 +91,71 @@
 .page-main__subheader {
     font-size: 24px;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .page-main__subheader--hot-price {
     color: #ff1a14;
     font-size: 36px;
 }
 
-@media (min-width: 320px) {
+/* @media (min-width: 321px) {
     .page {
         background-image: url('../img/bg.jpg');
     }
+    .page-header__animation {
+    position: absolute;
+    top: 50px;
+    left: 0%;
+    width: 232px;
+    height: 85px;
+    animation: move 25s linear infinite;
+}
     .page-main__header {
+        margin-top: 60px;
         font-size: 50px;
     }
     .page-main__subheader {
         font-size: 58px;
         line-height: 0.8;
+        margin-bottom: 20px;
     }
     .page-main__subheader--hot-price {
         font-size: 78px;
     }
-}
+    .page-main__button {
+        width: 385px;
+        height: 90px;
+        font-size: 73px;
+        border-width: 10px;
+    }
+    .page-main__button::before {
+        width: 575px;
+        height: 205px;
+        transform: translate(-30%, -50%);
+    }
+    .page-main__crab {
+        width: 150px;
+        height: 160px;
+    }
+} */
 
 .page-main__button {
     box-sizing: border-box;
     position: relative;
-    width: 385px;
-    height: 90px;
+    width: 175px;
+    height: 44px;
     order: 2;
     margin: 0;
     padding: 0;
     outline: none;
-    border-width: 10px;
+    border-width: 5px;
     border-left-color: #cc8246;
     border-bottom-color: #cc8246;
     border-right-color:#ffdaa4; 
     border-top-color:#ffdaa4;
     background-color: #ffa358;
     color: #bd0707;
-    font-size: 73px;
+    font-size: 33px;
     text-transform: uppercase;
     font-weight: bold;
     line-height: 1;
@@ -136,30 +170,30 @@
     position: absolute;
     content: "";
     z-index: -10;
-    transform: translate(-30%, -50%);
-    width: 575px;
-    height: 205px;
-    background: transparent url('../img/log.png') no-repeat center;
+    transform: translate(-30%, -45%);
+    width: 260px;
+    height: 92px;
+    background: transparent url('../img/log.png') no-repeat;
+    background-size: contain;
 }
 
 .page-main__crab {
     position: relative;
     z-index: 5;
     margin-bottom: 0px;
-    width: 150px;
-    height: 160px;
+    width: 75px;
+    height: 80px;
     -webkit-animation-play-state: running;
     animation-play-state: running;
     animation: crab-move 1.5s linear alternate infinite;
 }
 
-
 @keyframes move {
-       0%  { transform: translateX(-5vw) rotateY(0deg);}
-       50% { transform: translateX(110vw) rotateY(0deg);}
-       50.001% { transform: translateX(110vw) rotateY(180deg);}
-       100%  { transform: translateX(-110vw) rotateY(180deg);}
-    }
+    0%  { transform: translateX(-5vw) rotateY(0deg);}
+    50% { transform: translateX(110vw) rotateY(0deg);}
+    50.001% { transform: translateX(110vw) rotateY(180deg);}
+    100%  { transform: translateX(-110vw) rotateY(180deg);}
+}
 @keyframes crab-move {
     0% {transform: translateX(-120px);}
     100% {transform: translateX(120px);}
@@ -258,6 +292,8 @@
 }
 
 .page-footer {
+    width: 300px;
+    margin: 0 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -265,9 +301,9 @@
     align-content: center;
     align-items: center;
     padding: 10px 50px;
-    flex-grow: 0;
+    flex-grow: 1;
     flex-shrink: 0;
-    flex-basis: auto;
+    /* flex-basis: auto; */
 }
 
 .page-footer__text {
@@ -277,8 +313,8 @@
     color: #184a6f;
     line-height: 1.2;
     text-transform: uppercase;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .page-footer:hover .page-footer__animation {
@@ -301,7 +337,7 @@
     border-left: #fff 10px solid;
     border-right: #fff 10px solid;
     border-bottom: #fff 10px solid;
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.5);
     /* display: flex;
     flex-direction: column;
@@ -315,8 +351,8 @@
     height: 10px;
     width: 430px;
     top: -5px;
-    left: 6px;
-    border-top-left-radius: 80%;
+    left: 0px;
+    border-top-left-radius: 50%;
     /* transform: translate(0, 20%); */
     background-color: #fff;
     box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.5);

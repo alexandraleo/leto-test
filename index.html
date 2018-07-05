@@ -9,7 +9,10 @@
 </head>
 <body class="page">
     <header class="page-header">
-        <img src="img/plane.png" alt="Самолёт в лето" class="page-header__animation" width="232" height="85" >
+        <picture class="page-header__animation">
+            <source media="(min-width: 1150px)" srcset="img/plane.png 1x">
+            <img src="img/plane-sm.png" alt="Самолёт в лето" width="96" height="35" >
+        </picture>
         <a href="#" class="page-header__link">
             <picture class="page-header__image">
                 <source media="(min-width: 1150px)" srcset="img/logo.png 1x">
@@ -18,8 +21,8 @@
         </a>
     </header>
     <main class="page-main">
-        <h1 class="page-main__header">Успей приобрести!</h1>
-        <h2 class="page-main__subheader">путевки от <span class="page-main__subheader--hot-price">70&#160;000&#160;&#8381;</span></h2>
+        <h1 class="page-main__header">Успей&#160;приобрести!</h1>
+        <h2 class="page-main__subheader">путевки от&#160;<span class="page-main__subheader--hot-price">70&#160;000&#160;&#8381;</span></h2>
         <button type="button" class="page-main__button"><span class="page-main__button--text">В Лето</span></button>
         <div class="page-main__crab">
             <img src="img/crab/shell.png" alt="" class="page-main__crab--shell" width="98" height="116">
